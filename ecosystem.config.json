@@ -1,0 +1,15 @@
+{
+    "apps": [
+        {
+            "name": "nodejs-api-boilerplate-app",
+            "script": "src/app.js",
+            "instances": 1,
+            "autorestart": true,
+            "watch": true,
+            "time": true,
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    ]
+}
