@@ -13,14 +13,9 @@ yarn-error.log
 .DS_Store
 Thumbs.db
 .tmp/
-src/api/schema.gql
-
-# Typing #
-typings/
 
 # Dist #
 dist/
-tsconfig.build.json
 
 # IDE #
 .idea/
@@ -28,11 +23,4 @@ tsconfig.build.json
 .awcache
 
 # Generated source-code #
-src/**/*.js
-src/**/*.js.map
-!src/public/**/*
-test/**/*.js
-test/**/*.js.map
 coverage/
-!test/preprocessor.js
-mydb.sql
