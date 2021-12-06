@@ -51,7 +51,7 @@ module.exports = () => {
     // handle error
     app.use(errorHandler)
 
-    app.listen(env.app.port)
+    app.listen(process.env.PORT || env.app.port)
 
     return app
 }
