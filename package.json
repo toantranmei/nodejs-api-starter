@@ -6,7 +6,8 @@
     "author": "Sky Albert <trantoan.fox.97@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "dev": "cross-env NODE_ENV=development nodemon src/app.js"
+        "dev": "cross-env NODE_ENV=development nodemon src/app.js",
+        "start": "cross-env NODE_ENV=development node src/app.js"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",
