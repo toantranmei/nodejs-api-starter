@@ -1,9 +1,9 @@
 {
-    "name": "nodejs-api-boilerplate",
-    "description": "A delightful way to building a Node.js RESTful API Services with beautiful code written in Vanilla Javascript",
+    "name": "innovwayz-api-srv",
+    "description": "InnovWayz API Server",
     "version": "1.0.0",
     "main": "index.js",
-    "author": "Sky Albert <trantoan.fox.97@gmail.com>",
+    "author": "Jaffar Meeran <jaffar@innovwayz.com>",
     "license": "MIT",
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon src/app.js",
