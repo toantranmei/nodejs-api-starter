@@ -10,7 +10,7 @@ const logger = winston.createLogger({
             format: 'YYYY-MM-DD hh:mm:ss.SSS A',
         }),
         align(),
-        printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`)
+        printf((info) => `[${info.timestamp}] ${info.level}: ${info.message} : ${info.stack}`)
     ),
     transports: [
         new winston.transports.File({
