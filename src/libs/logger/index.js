@@ -1,9 +1,10 @@
 const path = require('path')
 const winston = require('winston')
-const { combine, timestamp, colorize, align, printf, json } = winston.format
+const { combine, timestamp, colorize, align, printf, errors, json } = winston.format
 const logger = winston.createLogger({
     level: process.env.LOG_LEVEL || 'info',
     format: combine(
+        errors({ stack: true }),
         colorize({ all: true }),
         timestamp({
             format: 'YYYY-MM-DD hh:mm:ss.SSS A',
