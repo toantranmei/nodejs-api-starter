@@ -4,7 +4,7 @@ module.exports = (log) => {
     if (env.app.banner) {
         const route = () => `${env.app.schema}://${env.app.host}:${env.app.port}`
         log.info(``)
-        log.info(`Sheeh, your app is ready on ${route()}${env.app.routePrefix}`)
+        log.info(`Bismillah, our app is ready on ${route()}${env.app.routePrefix}`)
         log.info(`To shut it down, press <CTRL> + C at any time.`)
         log.info(``)
         log.info('-------------------------------------------------------')
