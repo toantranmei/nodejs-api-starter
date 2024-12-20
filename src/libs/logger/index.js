@@ -46,22 +46,27 @@ module.exports = class Logger {
     }
 
     _log(level, message, args) {
+        logger.log(level, message)
         if (winston) winston[level](`${this._formatScope()} ${message}`, args)
     }
 
     debug(message, ...args) {
+        logger.log(level, message)
         this._log('debug', message, args)
     }
 
     info(message, ...args) {
+        logger.log(level, message)
         this._log('info', message, args)
     }
 
     warn(message, ...args) {
+        logger.log(level, message)
         this._log('warn', message, args)
     }
 
     error(message, ...args) {
+        logger.log(level, message)
         this._log('error', message, args)
     }
 }
