@@ -53,6 +53,9 @@ const env = {
         username: getOsEnv('SWAGGER_USERNAME'),
         password: getOsEnv('SWAGGER_PASSWORD'),
     },
+    supabase: {
+	loginUrl: getOsEnv('LOGIN_URL'),
+    },
 }
 
 module.exports = env
