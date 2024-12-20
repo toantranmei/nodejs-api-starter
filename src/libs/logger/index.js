@@ -67,7 +67,7 @@ module.exports = class Logger {
     }
 
     error(message, ...args) {
-        logger.log(level, message)
+        logger.log('error', message)
         this._log('error', message, args)
     }
 }
