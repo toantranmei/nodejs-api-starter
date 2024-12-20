@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "nodejs-api-boilerplate-app",
+            "name": "innovwayz-api-srv",
             "script": "src/app.js",
             "instances": 1,
             "autorestart": true,

@@ -3,6 +3,7 @@ const express = require('express')
 const authRoute = require('./v1/auth.route')
 const taskRoute = require('./v1/task.route')
 const userRoute = require('./v1/user.route')
+const statusRoute = require('./v1/status.route')
 
 const router = express.Router()
 
@@ -18,6 +19,10 @@ const defaultRoutes = [
     {
         path: '/v1/users',
         route: userRoute,
+    },
+    {
+        path: '/v1/status',
+        route: statusRoute,
     },
 ]
 
