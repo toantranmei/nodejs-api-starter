@@ -52,17 +52,17 @@ module.exports = class Logger {
     }
 
     debug(message, ...args) {
-        logger.log(level, message)
+        logger.log('debug', message)
         this._log('debug', message, args)
     }
 
     info(message, ...args) {
-        logger.log(level, message)
+        logger.log('info', message)
         this._log('info', message, args)
     }
 
     warn(message, ...args) {
-        logger.log(level, message)
+        logger.log('warn', message)
         this._log('warn', message, args)
     }
 
