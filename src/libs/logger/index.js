@@ -1,6 +1,26 @@
 const path = require('path')
 const winston = require('winston')
-
+const logger = winston.createLogger({
+    level: process.env.LOG_LEVEL || 'info',
+    format: combine(
+        colorize({ all: true }),
+        timestamp({
+            format: 'YYYY-MM-DD hh:mm:ss.SSS A',
+        }),
+        align(),
+        printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`)
+    ),
+    transports: [
+        new winston.transports.File({
+            filename: 'all.log',
+        }),
+        new winston.transports.File({
+            filename: 'error.log',
+            level: 'error',
+        }),
+        new winston.transports.Console(),
+    ],
+})
 module.exports = class Logger {
     static DEFAULT_SCOPE = 'app'
     #scope
