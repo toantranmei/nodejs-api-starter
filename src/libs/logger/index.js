@@ -1,6 +1,8 @@
 const path = require('path')
 const winston = require('winston')
 const { combine, timestamp, colorize, align, printf, errors, json } = winston.format
+let mydate = new Date();
+let newFilename = mydate.getFullYear() + "-" + mydate.getMonth() + "-" + mydate.getDate();
 const logger = winston.createLogger({
     level: process.env.LOG_LEVEL || 'info',
     format: combine(
@@ -14,11 +16,13 @@ const logger = winston.createLogger({
     ),
     transports: [
         new winston.transports.File({
-            filename: 'all.log',
+            filename: '../../logs/all_' + newFilename + '.log',
+	    maxSize: 1024,
         }),
         new winston.transports.File({
-            filename: 'error.log',
+            filename: '../../logs/error_' + newFilename + '.log',
             level: 'error',
+	    maxSize: 1024,
         }),
         new winston.transports.Console(),
     ],

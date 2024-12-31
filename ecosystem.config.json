@@ -2,7 +2,7 @@
     "apps": [
         {
             "name": "innovwayz-api-srv",
-            "script": "src/app.js",
+            "script": "cross-env NODE_ENV=development nodemon src/app.js",
             "instances": 1,
             "autorestart": true,
             "watch": true,
