@@ -1,5 +1,5 @@
 const httpStatus = require('http-status')
-
+const axios = require('axios')
 const ApiError = require('../../utils/api-error')
 const { User } = require('../models')
 const { supabase } = require('../../configs/env')
