@@ -54,7 +54,7 @@ const env = {
         password: getOsEnv('SWAGGER_PASSWORD'),
     },
     supabase: {
-	loginUrl: getOsEnv('LOGIN_URL'),
+        loginUrl: getOsEnv('LOGIN_URL'),
     },
 }
 

@@ -5,9 +5,11 @@
         "autorestart",
         "hsts",
         "mongodb",
+        "mydate",
         "openapi",
         "prefs",
-        "Sheeh"
+        "Sheeh",
+        "supabase"
     ],
     "flagWords": [
         "hte"

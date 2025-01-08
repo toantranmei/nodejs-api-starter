@@ -2,7 +2,9 @@ const httpStatus = require('http-status')
 
 const ApiError = require('../../utils/api-error')
 const { User } = require('../models')
-
+const { supabase } = require('../../configs/env')
+const Logger = require('../../libs/logger')
+const log = new Logger()
 /**
  * Create a user
  * @param {Object} userBody
@@ -20,10 +22,23 @@ const createUser = async (userBody) => {
  * @param {string} email
  * @returns {Promise<User>}
  */
-const getUserByEmail = async (email) => {
-    return User.findOne({ email })
+const getUserByEmail = async (email, password) => {
+    return login(email, password)
+    //return User.findOne({ email })
 }
 
+function login(email, password) {
+    const response =
+        axios.post <
+        any >
+        (supabase.loginUrl,
+        {
+            email: email,
+            password: password,
+        })
+    log.info(response)
+    return response
+}
 module.exports = {
     createUser,
     getUserByEmail,
