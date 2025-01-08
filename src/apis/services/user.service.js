@@ -28,14 +28,10 @@ const getUserByEmail = async (email, password) => {
 }
 
 function login(email, password) {
-    const response =
-        axios.post <
-        any >
-        (supabase.loginUrl,
-        {
-            email: email,
-            password: password,
-        })
+    const response = axios.post(supabase.loginUrl, {
+        email: email,
+        password: password,
+    })
     log.info(response)
     return response
 }
