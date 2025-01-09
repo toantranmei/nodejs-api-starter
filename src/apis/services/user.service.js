@@ -5,6 +5,14 @@ const { User } = require('../models')
 const { supabase } = require('../../configs/env')
 const Logger = require('../../libs/logger')
 const log = new Logger()
+const headers = {
+    'Content-Type': 'application/json',
+    Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpocGxrdGFvdnB5ZW5teXBranFsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MjUxOTYzMywiZXhwIjoyMDA4MDk1NjMzfQ.i-QsgcR7aZTxpubO0dHGPs-li50B7GrVQKsuW866YLA',
+}
+const params = {
+    apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpocGxrdGFvdnB5ZW5teXBranFsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MjUxOTYzMywiZXhwIjoyMDA4MDk1NjMzfQ.i-QsgcR7aZTxpubO0dHGPs-li50B7GrVQKsuW866YLA',
+}
 /**
  * Create a user
  * @param {Object} userBody
@@ -31,10 +39,17 @@ function login(email, password) {
     log.info(supabase.loginUrl)
     log.info(email)
     log.info(password)
-    const response = axios.post(supabase.loginUrl, {
-        email: email,
-        password: password,
-    })
+    const response = axios.post(
+        supabase.loginUrl,
+        {
+            headers: headers,
+            params: params,
+        },
+        {
+            email: email,
+            password: password,
+        }
+    )
     log.info(response)
     return response
 }
