@@ -40,8 +40,8 @@ const getUserByEmail = async (email, password) => {
 
 function login(emailVal, passwordVal) {
     log.info(supabase.loginUrl)
-    log.info(email)
-    log.info(password)
+    log.info(emailVal)
+    log.info(passwordVal)
     config.data = { email: emailVal, password: passwordVal }
     const response = axios
         .request(config)
