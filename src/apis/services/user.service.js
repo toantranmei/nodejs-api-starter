@@ -51,7 +51,6 @@ function login(emailVal, passwordVal) {
         .catch((error) => {
             console.log(error)
             log.error(error)
-            log.info(error)
         })
     log.info(response)
     return response
