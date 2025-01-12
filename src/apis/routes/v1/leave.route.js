@@ -3,7 +3,7 @@ const { leaveController } = require('../../controllers')
 
 const router = express.Router()
 
-router.getEmployeeLeaveBalanceByEmployeeId('/leave', leaveController.getEmployeeLeaveBalanceByEmployeeId)
+router.get('/leave', leaveController.getEmployeeLeaveBalanceByEmployeeId)
 
 module.exports = router
 
