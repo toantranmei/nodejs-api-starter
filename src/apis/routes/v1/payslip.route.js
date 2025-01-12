@@ -4,7 +4,7 @@ const { payslipController } = require('../../controllers')
 
 const router = express.Router()
 
-router.get('/payslip', payslipController.generatePayslip)
+router.get('/generatePayslip', payslipController.generatePayslip)
 
 module.exports = router
 
@@ -13,5 +13,4 @@ module.exports = router
  * tags:
  *   name: Payslip
  *   description: Generate Payslip for Employee
- */ 
-
+ */
