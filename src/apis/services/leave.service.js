@@ -1,10 +1,22 @@
 const jwt = require('jsonwebtoken')
 const moment = require('moment')
-
 const { Token } = require('../models')
-
 const env = require('../../configs/env')
 const { tokenTypes } = require('../../configs/tokens')
+let varEmployeeId = null
+let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url:
+        'https://zhplktaovpyenmypkjql.supabase.co/rest/v1/user?id=eq.' +
+        varEmployeeId +
+        '&select=leaveEntitlment(user_id,*)&apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpocGxrdGFvdnB5ZW5teXBranFsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MjUxOTYzMywiZXhwIjoyMDA4MDk1NjMzfQ.i-QsgcR7aZTxpubO0dHGPs-li50B7GrVQKsuW866YLA',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpocGxrdGFvdnB5ZW5teXBranFsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MjUxOTYzMywiZXhwIjoyMDA4MDk1NjMzfQ.i-QsgcR7aZTxpubO0dHGPs-li50B7GrVQKsuW866YLA',
+    },
+}
 
 /**
  * Employee Leave Balance
@@ -12,12 +24,22 @@ const { tokenTypes } = require('../../configs/tokens')
  * @returns {Promise<Object>}
  */
 const getEmployeeLeaveBalanceByEmployeeId = async (employeeId) => {
-    const accessTokenExpires = moment().add(env.passport.jwtAccessExpired / 60, 'minutes')
+    /*const accessTokenExpires = moment().add(env.passport.jwtAccessExpired / 60, 'minutes')
     const accessToken = generateToken(user.id, accessTokenExpires, tokenTypes.ACCESS)
-
     const refreshTokenExpires = moment().add(env.passport.jwtRefreshExpired / 60, 'minutes')
-    const refreshToken = generateToken(user.id, refreshTokenExpires, tokenTypes.REFRESH)
-    await calculateLeavesLeft(joiningDate, leavesLeft)
+    const refreshToken = generateToken(user.id, refreshTokenExpires, tokenTypes.REFRESH)*/
+    varEmployeeId = employeeId
+    const response = axios
+        .request(config)
+        .then((response) => {
+            console.log(JSON.stringify(response.data))
+        })
+        .catch((error) => {
+            console.log(error)
+            log.error(error)
+        })
+    log.info(response)
+    await calculateLeavesLeft(response.leaveEntitlment.leaveStartDate, response.leaveEntitlment.leaves_used)
     return {
         leaveLedger: {
             leavesLeft: calculateLeavesLeft.leavesLeft,
