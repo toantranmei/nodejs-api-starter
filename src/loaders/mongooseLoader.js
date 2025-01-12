@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+mongoose.set("strictQuery", false);
 const env = require('../configs/env')
 const Logger = require('../libs/logger')
 

@@ -2,12 +2,15 @@
     "version": "0.1",
     "language": "en",
     "words": [
+        "apikey",
         "autorestart",
         "hsts",
         "mongodb",
+        "mydate",
         "openapi",
         "prefs",
-        "Sheeh"
+        "Sheeh",
+        "supabase"
     ],
     "flagWords": [
         "hte"

@@ -1,6 +1,32 @@
 const path = require('path')
 const winston = require('winston')
-
+const { combine, timestamp, colorize, align, printf, errors, json } = winston.format
+let myDate = new Date()
+let newFilename = myDate.getFullYear() + '-' + myDate.getMonth() + '-' + myDate.getDate()
+const logger = winston.createLogger({
+    level: process.env.LOG_LEVEL || 'info',
+    format: combine(
+        errors({ stack: true }),
+        colorize({ all: true }),
+        timestamp({
+            format: 'YYYY-MM-DD hh:mm:ss.SSS A',
+        }),
+        align(),
+        printf((info) => `[${info.timestamp}] ${info.level}: ${info.message} : ${info.stack}`)
+    ),
+    transports: [
+        new winston.transports.File({
+            filename: '../../logs/all_' + newFilename + '.log',
+            maxSize: 1024,
+        }),
+        new winston.transports.File({
+            filename: '../../logs/error_' + newFilename + '.log',
+            level: 'error',
+            maxSize: 1024,
+        }),
+        new winston.transports.Console(),
+    ],
+})
 module.exports = class Logger {
     static DEFAULT_SCOPE = 'app'
     #scope
@@ -26,22 +52,27 @@ module.exports = class Logger {
     }
 
     _log(level, message, args) {
+        logger.log(level, message)
         if (winston) winston[level](`${this._formatScope()} ${message}`, args)
     }
 
     debug(message, ...args) {
+        logger.log('debug', message)
         this._log('debug', message, args)
     }
 
     info(message, ...args) {
+        logger.log('info', message)
         this._log('info', message, args)
     }
 
     warn(message, ...args) {
+        logger.log('warn', message)
         this._log('warn', message, args)
     }
 
     error(message, ...args) {
+        logger.log('error', message)
         this._log('error', message, args)
     }
 }
